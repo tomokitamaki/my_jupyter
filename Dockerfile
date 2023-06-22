@@ -2,7 +2,7 @@
 # Distributed under the terms of the Modified BSD License.
 
 # https://hub.docker.com/r/jupyter/base-notebook/tags?page=1&ordering=last_updated
-ARG BASE_CONTAINER=jupyter/datascience-notebook:lab-3.3.0
+ARG BASE_CONTAINER=jupyter/datascience-notebook:lab-3.6.3
 FROM $BASE_CONTAINER
 
 USER root
@@ -11,7 +11,7 @@ RUN apt update && apt upgrade -y && apt install -yq mecab mecab-ipadic-utf8 libm
 RUN ln -s /etc/mecab /usr/local/etc/mecabrc
 
 # いつもの良く使うモジュールをインストール
-RUN pip install pandas matplotlib seaborn japanize-matplotlib requests jupyterlab_code_formatter black isort wordcloud nltk librosa imbalanced-learn toml moviepy jupyterlab "ipywidgets>=7.5" plotly mecab-python3
+RUN pip install pandas matplotlib seaborn japanize-matplotlib requests jupyterlab_code_formatter black isort wordcloud nltk librosa imbalanced-learn toml moviepy jupyterlab "ipywidgets>=7.5" plotly mecab-python3 pandas-profiling
 
 # どうもどっからかiPythonとjediが上手く動かなくなったみたいでバージョンを固定しないと補完が効かなくなる。
 # RUN pip install jedi==0.17.2
